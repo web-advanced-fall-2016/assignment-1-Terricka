@@ -1,162 +1,150 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Slideshow</title>
-</head>
-	<style>
-		@font-face {
-		    font-family: Neue;
-		    src: url("../fonts/Neue-Display-Black.otf");
-		}
-
-		body {
-			margin:0;
-			padding:0;
-			text-align:center;
-			font-family: "Neue";
-		}
-		#slide-show-container {
-			width: 95%;
-			margin:2vh 2.5%;
-			padding:0;
-			text-align:center;
-			position: relative;/*
-			background:#000;*/
-			height:500px;
-		}
-
-		.images {
-			list-style:none;
-			height: 500px;
-			position: absolute;
-			/*background:#000;*/
-			top:0;
-			left:0;
-			width:100%;
-			opacity: 0;
-			transition: opacity 1s ease-in-out;
-		}
-
-		.images.fadeImage {
-			opacity:1;
-		}
-
-	
-
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>Simple Carousel</title>
 		
-
-		#dots {
-			width: 60%;
-			margin-left:20%;
-			margin-right:20%;
-			position:relative;
-			text-align:center;
-			top:60px;
-			z-index: 99999;
-
-		}
-
-
-
-		.dot {
-			border-radius: 50%;
-			width: 15px;
-			height: 15px;
-			background:rgba(0,0,0,.5);
-			position: relative;
-			float:left;
-			margin-left:.75vw;
-			margin-right:.75vw;
-			list-style:none;
-			cursor:pointer;
-			transition: opacity 1s ease-in-out;
-		}
-
-		.dot.active {
-			background:rgba(255,0,0,.8);
-		}
-	
-
-		.caption {
-			position: relative;
-			width:90%;
-			height: 50px;
-			padding: 2vh 5%;
-			z-index:99999;
-			top:-3px;
-			float: left;
-			background: rgba(255,255,255,.5);
-
-		}
-
-		img {
-			max-height: 500px;
-			width: auto;
-		}
-
-		#arrows {
-			width:90%;
-			margin-left: 5%;
-			margin-right:5%;
-			height:auto;
-			position: fixed;
-			top: 250px;
-			left:0;
-			z-index:99999;
-		}
-
-		#left-arrow {
-			position: relative;
-			float: left;
-		}
-
-		#right-arrow {
-			position: relative;
-			float:right;
-		}
-
-		.arrow {
-			color: #E82E21;
-			font-size:1.5em;
-			cursor: pointer
-		}
-/*
-		.active {
-			display:block;
-		}
-
-		.inactive {
-			display:none;
-		}*/
+		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	</head>
+	<style>
+			
 
 	</style>
 
-<body>
+	<body>
+		<div class="arrows">
 
-	<div id="slide-show-container">
-	<img id="mainImage" src="images/1.jpg">
-	</div>
-	<div id="arrows">
-		<div id="left-arrow" class="arrow" onclick="switchSlide(-1)">
-			 	&#10094;
+				<span class="arrow" id="left-arrow">
+					&#60;
+				</span>
+				<span class="arrow" id="right-arrow" style="float:right;">
+					&#62;
+				</span>
+
 			</div>
-			<div id="right-arrow" class="arrow" onclick="switchSlide(1)">
-			 	&#10095;
+		
+		<div id="slider" class="slider" style="">
+			<div id="slide-container" class="slider-frame">
+				<div class="slider-content">
+					<img src="images/4.jpg" alt="pic" data-src="images/4.jpg">
+					<img src="images/5.jpg" alt="pic" data-src="images/5.jpg">
+					<img src="images/6.jpg" alt="pic" data-src="images/6.jpg">
+					<img src="images/7.jpg" alt="pic" data-src="images/7.jpg">
+				</div>
 			</div>
-	</div>
-
-	<div id="dots">
-
-	</div>
-
-	<div id="captions">
-
-	</div>
-
-<script src="images.js"></script>
-<script src="slides.js"></script>
+			<div class="slider-controls">
+				<ul>
+				</ul>
+			</div>
+			
 
 
-</body>
+		</div>
+		
+		
+		<script type="text/javascript" src="scripts/carousel.js" defer></script>
+		<script type="text/javascript" src="scripts/main.js" defer></script>
 
+	</body>
 </html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+	<head>	
+		<title>Carousel</title>
+		<link rel="stylesheet" href="styles/styles.css">
+
+
+	</head>
+	<style>
+		.slide-container{
+		   position: relative;
+		   flex:auto;
+		   width: 100%;
+		   height: 100%;
+		}
+		.slide-container .slide-navigation{
+		   position: absolute;
+		   bottom: 0px;
+		   left: 0px;
+		   width: 100%;
+		   display: flex;
+		   justify-content: center;
+		   z-index: 680;
+		}
+		.slide-navigation ul{
+		   display: flex;
+		   flex-flow: row nowrap;
+		   justify-content: space-between;
+		}
+		.slide-navigation ul li{
+		   width: 10px;
+		   height: 10px;
+		   margin: 15px 5px;
+		   background-color: rgb(213, 232, 221);
+		   border-radius: 50%;
+		   list-style: none;
+		   cursor: pointer;
+		}
+		.slide-navigation ul li.current{
+		   background-color: rgb(10,237,143);
+		}
+		#slides{
+		   position: relative;
+		   display: flex;
+		   width: 100%;
+		   height: 100%;
+		   overflow: hidden;
+		   background-color: rgba(228, 249, 240,0.9);
+		}
+		#images{
+		   position: relative;
+		   display: flex;
+		   flex-flow: row nowrap;
+		   height: 100%;
+		   z-index: 600;
+		}
+		#images img{
+		   position: relative;
+		   margin: 0 auto;
+		   width:100%;
+		   height: 100%;
+		   flex: none;
+		   object-position: 50% 50%;
+		   object-fit: contain;
+		}
+
+	</style>
+	<body>
+
+		<div class="slide-container">
+			<div id="slides">
+				<div id="images">
+					<img src="images/4.jpg" alt="pic" data-src="images/4.jpg">
+					<img src="images/5.jpg" alt="pic" data-src="images/5.jpg">
+					<img src="images/6.jpg" alt="pic" data-src="images/6.jpg">
+					<img src="images/7.jpg" alt="pic" data-src="images/7.jpg">
+
+				</div>
+
+
+			</div>
+
+			<div class = "slide-navigation">
+				<ul>
+				</ul>
+			</div>
+		</div>
+
+
+		
+		<script src="scripts/carousel.js"></script>
+		<script src="scripts/main.js"></script>
+
+	</body>
+
+</html> -->
+
