@@ -1,3 +1,5 @@
+Project page (images take time to load): https://web-advanced-fall-2016.github.io/assignment-1-Terricka/
+
 # First Assignment Specification
 
 ## Assignment Specification
